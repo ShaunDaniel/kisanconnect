@@ -10,7 +10,7 @@ function App() {
     <>
       <Flex justifyContent={'center'} alignItems={'center'} direction={'column'}>
         <Image src={colorMode=='light'?'kc_lightbg.png' : 'kc_darkbg.png'} w={'sm'} mx={'auto'}></Image>
-          <Text my={5} fontSize={'x-large'}>Work in progress... 🚧</Text>
+          <Text my={5} fontSize={'x-large'}>Work at progress... 🚧</Text>
           <Button onClick={toggleColorMode} w={'fit-content'}>
             {colorMode === 'light' ? '🌙' : '☀'}
           </Button>
