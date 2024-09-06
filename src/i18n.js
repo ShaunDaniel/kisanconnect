@@ -22,6 +22,9 @@ i18n.use(initReactI18next).init({
                 registerAsFarmer: "Join us and secure a stable market for your crops!",
                 registerAsBuyer: "Connect with Farmers,\n Source Fresh Produce in Bulk!",
                 Email: "Email Address",
+                supportingindian:"Supporting Indian Farmers through Transparent and Secure Contract Farming",
+                Empowering:"Empowering Farmers, Connecting Buyers",
+                GetStarted:"Get Started"
             }
         },
         hi: {
@@ -37,9 +40,11 @@ i18n.use(initReactI18next).init({
                 signIn: "साइन इन करें",
                 signUp: "साइन अप करें" ,
                 registerAsFarmer: "हमारे साथ जुड़ें और अपनी फसलों के लिए एक स्थिर बाजार सुनिश्चित करें!",
-                registerAsBuyer: "किसानों से जुड़ें,\n थोक में ताजा उपज प्राप्त करें!"
+                registerAsBuyer: "किसानों से जुड़ें,\n थोक में ताजा उपज प्राप्त करें!",
+                supportingindian:"भारतीय किसानों का समर्थन पारदर्शी और सुरक्षित अनुबंध खेती के माध्यम से",
+                Empowering:"किसानों को सशक्त बनाना, खरीदारों से जोड़ना",
+                GetStarted:"शुरू करें"
                 
-
             }
         },
         ml: {
