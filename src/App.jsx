@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Register_Buyer from './components/Register_Buyer';
 import Register_Seller from './components/Register_Seller';
-import Footer from './components/Footer'; // Import the Footer component
+import Footer from './components/Footer'; 
 
 import './App.css';
 
