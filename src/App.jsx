@@ -1,22 +1,30 @@
-import { useState } from 'react'
-import './App.css'
-import { Button, Image, Flex, Text, useColorMode } from '@chakra-ui/react'
+// src/App.jsx
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Register from './components/Register';
+import Register_Buyer from './components/Register_Buyer';
+import Register_Seller from './components/Register_Seller';
+import Footer from './components/Footer'; // Import the Footer component
+
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const { colorMode, toggleColorMode } = useColorMode()
-
   return (
     <>
-      <Flex justifyContent={'center'} alignItems={'center'} direction={'column'}>
-        <Image src={colorMode=='light'?'kc_lightbg.png' : 'kc_darkbg.png'} w={'sm'} mx={'auto'}></Image>
-          <Text my={5} fontSize={'x-large'}>Work in progress... 🚧</Text>
-          <Button onClick={toggleColorMode} w={'fit-content'}>
-            {colorMode === 'light' ? '🌙' : '☀'}
-          </Button>
-      </Flex>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/signup/buyer" element={<Register_Buyer />} />
+        <Route path="/signup/seller" element={<Register_Seller />} />
+      </Routes>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
