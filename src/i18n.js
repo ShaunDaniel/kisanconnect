@@ -34,7 +34,7 @@ i18n.use(initReactI18next).init({
                 FName:"First Name",
                 LName:"Last Name",
                 Pno:"Phone Number",
-                CPassword:"confirrm Password",
+                CPassword:"Confirm Password",
                 State:"State",
                 City:"City",
                 B_O:"Business/Organization Name",
