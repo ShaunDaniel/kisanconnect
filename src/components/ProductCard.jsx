@@ -1,5 +1,5 @@
 // src/components/ProductCard.jsx
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Box,
   Image,
@@ -15,26 +15,45 @@ import {
   useToast
 } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
+import { format } from 'date-fns';
+import userService from '../services/userService';
 
 const ProductCard = ({
   product: {
     image,
-    name,
+    variety,
+    productName,
     category,
     grade,
     price,
-    negotiable,
-    quantity,
+    unit,
+    quantityAvailable,
+    quantityUnit,
     location,
     organic,
     harvestDate,
-    shelfLife,
+    expectedShelfLife,
     certifications,
     farmerName,
     rating,
+    addedBy
   },
 }) => {
+
   const toast = useToast();
+  const [createdByUser, setCreatedByUser] = useState({});
+  
+  const date = new Date(harvestDate);
+  const formattedDate = format(date, 'MMMM do, yyyy');
+  
+  useEffect(() => {
+    userService.getUser(addedBy).then((response) => {
+      setCreatedByUser(response.data);
+    });
+  }, []);
+
+
+  console.log("ProductCard: ", productName);
   const loadProductDetails = () => {
     toast({title:"Working on it!", description: "This feature is under development", status: "info", duration: 3000, isClosable: true});
   };
@@ -55,7 +74,7 @@ const ProductCard = ({
         <Stack spacing="2">
           <Flex justifyContent={'space-between'} mb={2}>
             <Text fontWeight="bold" fontSize="xl" w={"50%"} lineHeight={'1'}>
-              {name}
+              {productName} {`(${variety})`}
             </Text>
             <Flex gap={2}>
               <Tag colorScheme='blue' fontWeight={'bold'} h={'fit-content'}>{category}</Tag>
@@ -68,7 +87,7 @@ const ProductCard = ({
                 <strong>Grade</strong>: {grade}
               </Text>
               <Text fontSize="md" color="gray.500">
-                Quantity Available: {quantity}
+                Quantity Available: {quantityAvailable}
               </Text>
             </Flex>
             <Flex direction={'column'}>
@@ -86,23 +105,23 @@ const ProductCard = ({
           </Text>
 
           <Text fontSize="sm" color="gray.500">
-            Harvest Date: {harvestDate}
+            Harvest Date: {formattedDate}
           </Text>
           <Text fontSize="sm" color="gray.500">
-            Shelf Life: {shelfLife} days
+            Shelf Life: {expectedShelfLife} days
           </Text>
 
           <Flex justifyContent={'space-between'} mt={5}>
             <Tag size={{base:'sm',md:'xl'}} p={2} colorScheme='green' borderRadius='full' w={'fit-content'}>
               <Avatar
-                src='https://bit.ly/sage-adebayo'
+                src='#'
                 size='xs'
-                name='Segun Adebayo'
+                name={`${createdByUser.firstName} ${createdByUser.lastName}`}
                 ml={-1}
                 mr={2}
 
               />
-              <TagLabel>{farmerName}</TagLabel>
+              <TagLabel>{`${createdByUser.firstName} ${createdByUser.lastName}`}</TagLabel>
             </Tag>
             <Flex mx={5} alignItems="center">
               {Array(5)

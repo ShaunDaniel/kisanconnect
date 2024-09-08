@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router';
 import i18n from '../i18n.js';
 import { useTranslation } from 'react-i18next'
 
-
-
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
@@ -20,13 +18,11 @@ export default function Navbar() {
         i18n.changeLanguage(lng);
     };
 
-
     return (
         <Box minH={"20vh"}>
             <Flex
                 bg={useColorModeValue('white', 'gray.800')}
                 color={useColorModeValue('gray.600', 'white')}
-
                 py={{ base: 1 }}
                 px={{ base: 10 }}
                 borderBottom={1}
@@ -44,23 +40,29 @@ export default function Navbar() {
                         variant={'ghost'}
                         aria-label={'Toggle Navigation'}
                     />
-
                 </Flex>
 
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} >
-
                     <Flex gap={2} alignItems={'center'}>
                         <Button display={{ base: 'none', md: 'block' }} onClick={toggleColorMode} w={'fit-content'} colorScheme='green'>
                             {colorMode === 'light' ? '🌙' : '☀'}
                         </Button>
                         <Menu>
-                            <MenuButton as={Button} display={{ base: 'none', md: 'block' }} colorScheme='green'  px={4}>
+                            <MenuButton as={Button} display={{ base: 'none', md: 'block' }} colorScheme='green' px={4}>
                                 {i18n.language === 'en' ? 'A' : 'अ'}
                             </MenuButton>
                             <MenuList>
                                 <MenuItem onClick={() => changeLanguage('en')}>English</MenuItem>
                                 <MenuItem onClick={() => changeLanguage('hi')}>हिन्दी</MenuItem>
                                 <MenuItem onClick={() => changeLanguage('ml')}>മലയാളം</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('ta')}>தமிழ்</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('te')}>తెలుగు</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('kn')}>ಕನ್ನಡ</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('bn')}>বাংলা</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('gu')}>ગુજરાતી</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('mr')}>मराठी</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('pa')}>ਪੰਜਾਬੀ</MenuItem>
+                                <MenuItem onClick={() => changeLanguage('ur')}>اردو</MenuItem>
                             </MenuList>
                         </Menu>
                     </Flex>
@@ -76,11 +78,10 @@ export default function Navbar() {
                     justify={'flex-end'}
                     direction={'row'}
                     spacing={8}
-
                 >
-                   {user ? (
+                    {user ? (
                         <Menu>
-                            <MenuButton as={Button} colorScheme='green'  rightIcon={<ChevronDownIcon />}>
+                            <MenuButton as={Button} colorScheme='green' rightIcon={<ChevronDownIcon />}>
                                 {user.firstName}
                             </MenuButton>
                             <MenuList>
@@ -129,10 +130,11 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-    const linkColor = useColorModeValue('gray.600', 'gray.200')
-    const linkHoverColor = useColorModeValue('gray.800', 'white')
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+    const linkColor = useColorModeValue('gray.600', 'gray.200');
+    const linkHoverColor = useColorModeValue('gray.800', 'white');
+    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
     const navItems = NAV_ITEMS();
+    const navigate = useNavigate();
 
     return (
         <Stack direction={'row'} spacing={4}>
@@ -143,7 +145,8 @@ const DesktopNav = () => {
                             <Box
                                 as="a"
                                 p={2}
-                                href={navItem.href ?? '#'}
+                                onClick={() => navigate(navItem.href ?? '#')}
+                                cursor={'pointer'}
                                 fontSize={'sm'}
                                 fontWeight={500}
                                 color={linkColor}
@@ -151,7 +154,7 @@ const DesktopNav = () => {
                                     textDecoration: 'none',
                                     color: linkHoverColor,
                                 }}>
-                                {navItem}
+                                {navItem.label}
                             </Box>
                         </PopoverTrigger>
 
@@ -173,23 +176,21 @@ const DesktopNav = () => {
                     </Popover>
                 </Box>
             ))}
-
         </Stack>
-    )
-}
-
-
+    );
+};
 
 const MobileNav = () => {
     const navItems = NAV_ITEMS();
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode, toggleColorMode } = useColorMode();
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
+
     return (
         <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
             {navItems.map((navItem, key) => (
-                <MobileNavItem key={key} label={navItem} />
+                <MobileNavItem key={key} label={navItem.label} href={navItem.href} />
             ))}
             <Flex mb={2}>
                 <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')} mr={2} alignContent={'center'}>
@@ -200,7 +201,7 @@ const MobileNav = () => {
                 </Button>
             </Flex>
             <Flex>
-            <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')} mr={2} alignContent={'center'}>
+                <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')} mr={2} alignContent={'center'}>
                     Language:
                 </Text>
                 <Menu>
@@ -215,18 +216,19 @@ const MobileNav = () => {
                 </Menu>
             </Flex>
         </Stack>
-    )
-}
+    );
+};
 
 const MobileNavItem = ({ label, href }) => {
-    const { isOpen, onToggle } = useDisclosure()
+    const { isOpen, onToggle } = useDisclosure();
+    const navigate = useNavigate();
 
     return (
         <Stack spacing={4} onClick={onToggle}>
             <Box
                 py={2}
-                as="a"
-                href={href ?? '#'}
+                as="button"
+                onClick={() => navigate(href ?? '#')}
                 justifyContent="space-between"
                 alignItems="center"
                 _hover={{
@@ -236,17 +238,15 @@ const MobileNavItem = ({ label, href }) => {
                     {label}
                 </Text>
             </Box>
-
-
         </Stack>
-    )
-}
+    );
+};
 
 const NAV_ITEMS = () => {
     const { t } = useTranslation();
     return [
-        t('marketplace'),
-        t('categories'),
-        t('myListing')
+        { label: t('marketplace'), href: '/products' },
+        { label: t('categories'), href: '/categories' },
+        { label: t('myListing'), href: '/my-listing' }
     ];
 };

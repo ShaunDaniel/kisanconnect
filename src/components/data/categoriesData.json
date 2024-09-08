@@ -1,0 +1,132 @@
+{
+  "categories": {
+    "Fruits": {
+      "emoji": "🍎",
+      "code": "fruit",
+      "items": [
+        { "name": "Apple", "localName": "सेब" },
+        { "name": "Banana", "localName": "केला" },
+        { "name": "Grapes", "localName": "अंगूर" },
+        { "name": "Mango", "localName": "आम" },
+        { "name": "Guava", "localName": "अमरूद" },
+        { "name": "Pomegranate", "localName": "अनार" },
+        { "name": "Watermelon", "localName": "तरबूज" },
+        { "name": "Orange", "localName": "संतरा" },
+        { "name": "Strawberry", "localName": "स्ट्रॉबेरी" },
+        { "name": "Papaya", "localName": "पपीता" },
+        { "name": "Pineapple", "localName": "अनानास" },
+        { "name": "Muskmelon", "localName": "खरबूजा" },
+        { "name": "Kinnow", "localName": "किन्नू" },
+        { "name": "Litchi", "localName": "लीची" },
+        { "name": "Chikoo", "localName": "चीकू" },
+        { "name": "Jackfruit", "localName": "कटहल" },
+        { "name": "Custard Apple", "localName": "सीताफल" },
+        { "name": "Apricot", "localName": "खुबानी" },
+        { "name": "Dates", "localName": "खजूर" },
+        { "name": "Avocado", "localName": "एवोकाडो" }
+      ]
+    },
+    "Vegetables": {
+      "emoji": "🥦",
+      "code": "veg",
+      "items": [
+        { "name": "Tomato", "localName": "टमाटर" },
+        { "name": "Onions", "localName": "प्याज" },
+        { "name": "Potato", "localName": "आलू" },
+        { "name": "Cauliflower", "localName": "फूलगोभी" },
+        { "name": "Carrot", "localName": "गाजर" },
+        { "name": "Brinjal", "localName": "बैंगन" },
+        { "name": "Bottle Gourd", "localName": "लौकी" },
+        { "name": "Bitter Gourd", "localName": "करेला" },
+        { "name": "Cabbage", "localName": "पत्तागोभी" },
+        { "name": "Capsicum", "localName": "शिमला मिर्च" },
+        { "name": "Cucumber", "localName": "खीरा" },
+        { "name": "Peas", "localName": "मटर" },
+        { "name": "Garlic", "localName": "लहसुन" },
+        { "name": "Ginger", "localName": "अदरक" },
+        { "name": "Pumpkin", "localName": "कद्दू" },
+        { "name": "Beans", "localName": "फलियाँ" },
+        { "name": "Sweet Potato", "localName": "शकरकंद" },
+        { "name": "Drumstick", "localName": "सहजन" },
+        { "name": "Zucchini", "localName": "जुकीनी" },
+        { "name": "Broccoli", "localName": "ब्रोकली" }
+      ]
+    },
+    "Spices": {
+      "emoji": "🌶️",
+      "code": "spice",
+      "items": [
+        { "name": "Black Pepper", "localName": "काली मिर्च" },
+        { "name": "Turmeric", "localName": "हल्दी" },
+        { "name": "Garlic", "localName": "लहसुन" },
+        { "name": "Ginger", "localName": "अदरक" },
+        { "name": "Kasoori Methi", "localName": "कसूरी मेथी" },
+        { "name": "Cumin", "localName": "जीरा" },
+        { "name": "Coriander Seeds", "localName": "धनिया के बीज" },
+        { "name": "Fenugreek", "localName": "मेथी" },
+        { "name": "Mustard Seeds", "localName": "सरसों" },
+        { "name": "Chilli Powder", "localName": "लाल मिर्च पाउडर" },
+        { "name": "Cardamom", "localName": "इलायची" },
+        { "name": "Cinnamon", "localName": "दालचीनी" },
+        { "name": "Cloves", "localName": "लौंग" },
+        { "name": "Bay Leaves", "localName": "तेज पत्ता" },
+        { "name": "Asafoetida", "localName": "हींग" },
+        { "name": "Fennel Seeds", "localName": "सौंफ" },
+        { "name": "Caraway Seeds", "localName": "शाह जीरा" },
+        { "name": "Nutmeg", "localName": "जायफल" },
+        { "name": "Star Anise", "localName": "चक्र फूल" },
+        { "name": "Black Cardamom", "localName": "बड़ी इलायची" }
+      ]
+    },
+    "Pulses": {
+      "emoji": "🍲",
+      "code": "pulse",
+      "items": [
+        { "name": "Urad Dal", "localName": "उड़द दाल" },
+        { "name": "Moong Dal", "localName": "मूंग दाल" },
+        { "name": "Chana Dal", "localName": "चना दाल" },
+        { "name": "Toor Dal", "localName": "तूर दाल" },
+        { "name": "Masoor Dal", "localName": "मसूर दाल" },
+        { "name": "Rajma", "localName": "राजमा" },
+        { "name": "Kabuli Chana", "localName": "काबुली चना" },
+        { "name": "Black Eyed Beans", "localName": "लोबिया" },
+        { "name": "Green Gram", "localName": "मूंग" },
+        { "name": "Horse Gram", "localName": "कुलथी" },
+        { "name": "Soybean", "localName": "सोयाबीन" },
+        { "name": "Red Lentils", "localName": "लाल मसूर" },
+        { "name": "Yellow Split Peas", "localName": "पीली मटर" },
+        { "name": "Moth Beans", "localName": "मठ" },
+        { "name": "Pigeon Peas", "localName": "अरहर" },
+        { "name": "Chickpeas", "localName": "चना" },
+        { "name": "Lobia", "localName": "लोबिया" },
+        { "name": "Bengal Gram", "localName": "काबुली चना" },
+        { "name": "Field Peas", "localName": "मटर" },
+        { "name": "Kidney Beans", "localName": "राजमा" }
+      ]
+    },
+    "Grains & Cereals": {
+      "emoji": "🌾",
+      "code": "grain",
+      "items": [
+        { "name": "Wheat", "localName": "गेहूं" },
+        { "name": "Rice", "localName": "चावल" },
+        { "name": "Basmati Rice", "localName": "बासमती चावल" },
+        { "name": "Brown Rice", "localName": "ब्राउन राइस" },
+        { "name": "Millet", "localName": "बाजरा" },
+        { "name": "Jowar", "localName": "ज्वार" },
+        { "name": "Bajra", "localName": "बाजरा" },
+        { "name": "Maize", "localName": "मकई" },
+        { "name": "Barley", "localName": "जौ" },
+        { "name": "Oats", "localName": "जई" },
+        { "name": "Ragi", "localName": "रागी" },
+        { "name": "Quinoa", "localName": "क्विनोआ" },
+        { "name": "Sorghum", "localName": "ज्वार" },
+        { "name": "Foxtail Millet", "localName": "कंगनी" },
+        { "name": "Pearl Millet", "localName": "बाजरा" },
+        { "name": "Finger Millet", "localName": "रागी" },
+        { "name": "Barnyard Millet", "localName": "सांवा" },
+        { "name": "Kodo Millet", "localName": "कोदो" }
+      ]
+    }
+  }
+}

@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import { Button, Flex, Heading, Text, Image, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { useUser } from '../contexts/UserContext';
 
 function Homepage() {
     const [count, setCount] = useState(0);
     const { colorMode, toggleColorMode } = useColorMode();
     const navigate = useNavigate();
+    const { user } = useUser()
+    
     const handleGetStarted = () => {
-        navigate('/signup');
+        if(user){
+            navigate('/products');
+        }
+        else{
+            navigate('/signup');
+
+        }
 
     }
     const { t } = useTranslation();
