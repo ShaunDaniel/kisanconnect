@@ -3,27 +3,36 @@ import { Flex, Box, FormControl, FormLabel, Input, Checkbox, Stack, Button, Head
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
+import userService from '../services/userService'; // Ensure this import is correct
+import { useUser } from '../contexts/UserContext';
 
 export default function Login() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const toast = useToast();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,setError, formState: { errors } } = useForm();
+    const { saveUser } = useUser();
 
     const onSubmit = data => {
-        toast({
-            title: "Work in Progress",
-            description: "This feature is under development.",
-            status: "info",
-            duration: 5000,
-            isClosable: true,
-        });
+        toast.promise(
+            userService.loginUser(data,toast).then(response => {
+                // Access the returned data here
+                console.log('Login response:', response.data);
+                saveUser(response.data);
+                navigate('/products'); // Navigate to the dashboard or any other page
+            }),
+            {
+                loading: { title: 'Logging in...', description: 'Please wait...' },
+                success: { title: 'Login Successful', description: 'You have successfully logged in!', status: 'success', duration: 5000, isClosable: true },
+                error: { title: 'Login Failed!',status: 'error', duration: 5000, isClosable: true }
+            }
+        );
     };
 
     return (
         <Flex>
             <Flex display={{ base: "none", md: "flex" }} w={'50%'}>
-                <Image src='login.webp' objectFit={'cover'} borderTopRightRadius={'15'} borderBottomRightRadius={'15'} loading='lazy' />
+                <Image src='login.jpg' objectFit={'cover'} borderTopRightRadius={'15'} borderBottomRightRadius={'15'} loading='lazy' />
             </Flex>
             <Flex
                 minH={{ base: "50vh", md: '100vh' }}
@@ -61,7 +70,7 @@ export default function Login() {
                                     )}
                                 </FormControl>
 
-                                <FormControl id="password">
+                                <FormControl id="password" isInvalid={errors.password}>
                                     <FormLabel>{t('password')}</FormLabel>
                                     <Input
                                         type="password"
