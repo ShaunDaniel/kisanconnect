@@ -61,7 +61,9 @@ export default function Register() {
                                 }}
                                 onClick={() => handleSelection('Buyer')}
                             >
+
                                 {t('buyProduce')}
+
                             </Button>
                             <Button
                                 size="lg"
@@ -72,7 +74,9 @@ export default function Register() {
                                 }}
                                 onClick={() => handleSelection('Farmer')}
                             >
-                                {t('sellProduce')}
+
+                                {t('SellProduce')}
+
                             </Button>
                         </Stack>
                     </Stack>
