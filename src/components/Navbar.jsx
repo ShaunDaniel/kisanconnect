@@ -1,9 +1,9 @@
 import { Box, Flex, Text, Image, IconButton, Button, Stack, Collapse, Icon, Popover, Menu, MenuButton, MenuItem, MenuList, PopoverTrigger, PopoverContent, useColorModeValue, useDisclosure, useColorMode } from '@chakra-ui/react'
-import { HamburgerIcon, CloseIcon, ChevronRightIcon, } from '@chakra-ui/icons'
-
+import { HamburgerIcon, CloseIcon, ChevronDownIcon, } from '@chakra-ui/icons'
+import { useUser } from '../contexts/UserContext';
 import { useNavigate } from 'react-router';
 
-import i18n from '../i18n';
+import i18n from '../i18n.js';
 import { useTranslation } from 'react-i18next'
 
 
@@ -12,10 +12,10 @@ export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure()
     const { colorMode, toggleColorMode } = useColorMode()
     const { t } = useTranslation()
+    const { user } = useUser()
     const navigate = useNavigate();
     const light_logo = '/kc_lightbg.png';
     const dark_logo = '/kc_darkbg.png';
-
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
@@ -54,7 +54,7 @@ export default function Navbar() {
                             {colorMode === 'light' ? '🌙' : '☀'}
                         </Button>
                         <Menu>
-                            <MenuButton as={Button} display={{ base: 'none', md: 'block' }} colorScheme='green' color={'white'} px={4}>
+                            <MenuButton as={Button} display={{ base: 'none', md: 'block' }} colorScheme='green'  px={4}>
                                 {i18n.language === 'en' ? 'A' : 'अ'}
                             </MenuButton>
                             <MenuList>
@@ -64,7 +64,7 @@ export default function Navbar() {
                             </MenuList>
                         </Menu>
                     </Flex>
-                    <Image src={colorMode == 'light' ? light_logo : dark_logo} objectFit={'contain'} cursor={'pointer'} alt='kisanconnect logo' h={'10rem'} onClick={() => { navigate('/') }}></Image>
+                    <Image src={colorMode == 'light' ? light_logo : dark_logo} objectFit={'contain'} cursor={'pointer'} alt='kisanconnect logo' h={'12rem'} onClick={() => { navigate('/') }}></Image>
 
                     <Flex display={{ base: 'none', md: 'flex' }} alignItems={'center'} ml={10}>
                         <DesktopNav />
@@ -78,32 +78,46 @@ export default function Navbar() {
                     spacing={8}
 
                 >
-                    <Button
-                        as={'a'}
-                        fontSize={'sm'}
-                        px={5}
-                        py={3}
-                        fontWeight={400}
-                        variant={'link'}
-                        cursor={'pointer'}
-                        _hover={{ textDecoration: "none", backgroundColor: useColorModeValue('green.200', 'green.700') }}
-                        onClick={() => { navigate('/login') }}
-                    >
-                        {t('signIn')}
-                    </Button>
-                    <Button
-                        as={'a'}
-                        display={{ base: 'none', md: 'inline-flex' }}
-                        fontSize={'sm'}
-                        fontWeight={600}
-                        color={'white'}
-                        cursor={'pointer'}
-                        bg={useColorModeValue('green.400', 'green.600')}
-                        _hover={{ bg: useColorModeValue('green.300', 'green.500') }}
-                        onClick={() => { navigate('/signup') }}
-                    >
-                        {t('signUp')}
-                    </Button>
+                   {user ? (
+                        <Menu>
+                            <MenuButton as={Button} colorScheme='green'  rightIcon={<ChevronDownIcon />}>
+                                {user.firstName}
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
+                                <MenuItem onClick={() => navigate('/logout')}>Logout</MenuItem>
+                            </MenuList>
+                        </Menu>
+                    ) : (
+                        <>
+                            <Button
+                                as={'a'}
+                                fontSize={'sm'}
+                                px={5}
+                                py={3}
+                                fontWeight={400}
+                                variant={'link'}
+                                cursor={'pointer'}
+                                _hover={{ textDecoration: "none", backgroundColor: useColorModeValue('green.200', 'green.700') }}
+                                onClick={() => { navigate('/login') }}
+                            >
+                                {t('signIn')}
+                            </Button>
+                            <Button
+                                as={'a'}
+                                display={{ base: 'none', md: 'inline-flex' }}
+                                fontSize={'sm'}
+                                fontWeight={600}
+                                color={'white'}
+                                cursor={'pointer'}
+                                bg={useColorModeValue('green.400', 'green.600')}
+                                _hover={{ bg: useColorModeValue('green.300', 'green.500') }}
+                                onClick={() => { navigate('/signup') }}
+                            >
+                                {t('signUp')}
+                            </Button>
+                        </>
+                    )}
                 </Stack>
             </Flex>
 
