@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import userService  from '../services/userService';
+
 import {
     Box,
     Image,
@@ -16,16 +20,16 @@ import {
     useToast
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import { Country, State, City } from 'country-state-city';
-import { useTranslation } from 'react-i18next';
+import { State, City } from 'country-state-city';
 
 export default function RegisterSeller() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,watch, formState: { errors } } = useForm();
     const [states, setStates] = useState(State.getStatesOfCountry('IN'));
     const [cities, setCities] = useState([]);
     const [selectedState, setSelectedState] = useState('');
     const { t } = useTranslation();
     const toast = useToast();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (selectedState) {
@@ -37,16 +41,25 @@ export default function RegisterSeller() {
     }, [selectedState]);
 
     const onSubmit = data => {
-        toast({
-            title: `Work in Progress!`,
-            description: `This feature is under development. ${data.firstName} will be registered as a farmer.`,
-            status: "info",
-        });
-        console.log("Data submitted: ", data);
+        data.userType = 'farmer';
+        toast.promise(
+            userService.registerUser(data).then((response) => {
+                console.log(response.data);
+                navigate('/login');
+            })            
+            ,
+            {
+                loading: {title:'Registering...',description:'Please wait...'},
+                success: {title:'Registration Successful',description:'You have been successfully registered as a farmer partner!'},
+                error: {title:'Registration Failed!',description:'An error occurred while registering you. Please try again later!'}
+            }
+        );
     };
 
+    const password = watch('password');
+
     return (
-        <Flex gap={5}>
+        <Flex gap={5} mb={5}>
             <Flex display={{ base: "none", md: "flex" }} w={'50%'} position="relative">
                 <Image
                     src='/register_farmer.png'
@@ -117,13 +130,27 @@ export default function RegisterSeller() {
 
                         <FormControl id="password" isInvalid={errors.password}>
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder='********' {...register('password', { required: 'Password is required' })} />
+                            <Input type="password" placeholder='********' {...register('password', {
+                                            required: 'Password is required',
+                                            minLength: {
+                                                value: 6,
+                                                message: 'Password must be at least 6 characters long'
+                                            }
+                                        })} />
                             {errors.password && <Text color="red.500">{errors.password.message}</Text>}
                         </FormControl>
 
                         <FormControl id="confirmPassword" isInvalid={errors.confirmPassword}>
                             <FormLabel>Confirm Password</FormLabel>
-                            <Input type="password" placeholder='********' {...register('confirmPassword', { required: 'Confirm Password is required' })} />
+                            <Input
+                                type="password"
+                                placeholder='********'
+                                {...register('confirmPassword', {
+                                    required: 'Confirm Password is required',
+                                    validate: value =>
+                                        value === password || 'Passwords do not match'
+                                })}
+                            />
                             {errors.confirmPassword && <Text color="red.500">{errors.confirmPassword.message}</Text>}
                         </FormControl>
 
@@ -187,17 +214,17 @@ export default function RegisterSeller() {
                             {errors.farmingType && <Text color="red.500">{errors.farmingType.message}</Text>}
                         </FormControl>
 
-                        <FormControl id="transportation" isInvalid={errors.transportation}>
+                        <FormControl id="hasTransportService" isInvalid={errors.hasTransportService}>
                             <FormLabel>Transportation Facilities</FormLabel>
-                            <Checkbox>
+                            <Checkbox {...register('hasTransportService')}>
                                 Do you have your own vehicle for delivery?
                             </Checkbox>
-                            {errors.transportation && <Text color="red.500">{errors.transportation.message}</Text>}
+                            {errors.hasTransportService && <Text color="red.500">{errors.hasTransportService.message}</Text>}
                         </FormControl>
 
-                        <FormControl id="certifications">
-                        <FormLabel>Certification</FormLabel>
-                            <Checkbox {...register('certifications')} w={'full'} my={1}>
+                        <FormControl id="isCertified">
+                            <FormLabel>Certification</FormLabel>
+                            <Checkbox {...register('isCertified')} w={'full'} my={1}>
                                 I have certifications
                             </Checkbox>
                             <Text fontSize="sm" color="gray.500">
@@ -205,11 +232,11 @@ export default function RegisterSeller() {
                             </Text>
                         </FormControl>
 
-                        <FormControl id="terms" isInvalid={errors.terms}>
-                            <Checkbox w={"full"} {...register('terms', { required: 'You must agree to the terms and conditions' })}>
+                        <FormControl id="istermsAccepted" isInvalid={errors.istermsAccepted}>
+                            <Checkbox w={"full"} {...register('istermsAccepted', { required: 'You must agree to the terms and conditions' })}>
                                 I agree to the terms and conditions
                             </Checkbox>
-                            {errors.terms && <Text color="red.500">{errors.terms.message}</Text>}
+                            {errors.terms && <Text color="red.500">{errors.istermsAccepted.message}</Text>}
                         </FormControl>
                     </SimpleGrid>
                     <Button type="submit" colorScheme="green" w={'full'} size={'lg'} mt={4}>

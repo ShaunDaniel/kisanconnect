@@ -18,14 +18,17 @@ import {
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { State, City } from 'country-state-city';
+import { useNavigate } from 'react-router-dom';
+import userService from '../services/userService';
 
 export default function RegisterBuyer() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,watch, formState: { errors } } = useForm();
     const [states, setStates] = useState(State.getStatesOfCountry('IN'));
     const [cities, setCities] = useState([]);
     const [selectedState, setSelectedState] = useState('');
     const { t } = useTranslation();
     const toast = useToast();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (selectedState) {
@@ -38,15 +41,26 @@ export default function RegisterBuyer() {
 
 
     const onSubmit = data => {
-        toast({
-            title: `Work in Progress!`,
-            description: `This feature is under development. ${data.firstName} will be registered as a buyer.`,
-            status: "info",
-        });
+        data.userType = 'buyer';
+        toast.promise(
+            userService.registerUser(data).then((response) => {
+                console.log(response.data);
+                navigate('/login');
+            })            
+            ,
+            {
+                loading: {title:'Registering...',description:'Please wait...'},
+                success: {title:'Registration Successful',description:'You have been successfully registered as a buyer!'},
+                error: {title:'Registration Failed!',description:'An error occurred while registering you. Please try again later!'}
+            }
+        );
     };
 
+    const password = watch('password');
+
+
     return (
-        <Flex gap={5}>
+        <Flex gap={5} mb={5}>
             {/* Left Image */}
             <Flex display={{ base: "none", md: "flex" }} w={'50%'} position="relative">
                 <Box
@@ -116,13 +130,26 @@ export default function RegisterBuyer() {
 
                         <FormControl id="password" isInvalid={errors.password}>
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder='********' {...register('password', { required: 'Password is required' })} />
+                            <Input type="password" placeholder='********' {...register('password', {
+                                                required: 'Password is required',
+                                                minLength: {
+                                                    value: 6,
+                                                    message: 'Password must be at least 6 characters long'
+                                                }})} />
                             {errors.password && <Text color="red.500">{errors.password.message}</Text>}
                         </FormControl>
 
                         <FormControl id="confirmPassword" isInvalid={errors.confirmPassword}>
                             <FormLabel>Confirm Password</FormLabel>
-                            <Input type="password" placeholder='********' {...register('confirmPassword', { required: 'Confirm Password is required' })} />
+                            <Input
+                                type="password"
+                                placeholder='********'
+                                {...register('confirmPassword', {
+                                    required: 'Confirm Password is required',
+                                    validate: value =>
+                                        value === password || 'Passwords do not match'
+                                })}
+                            />
                             {errors.confirmPassword && <Text color="red.500">{errors.confirmPassword.message}</Text>}
                         </FormControl>
 
@@ -164,10 +191,10 @@ export default function RegisterBuyer() {
                             {errors.businessName && <Text color="red.500">{errors.businessName.message}</Text>}
                         </FormControl>
                         
-                        <FormControl id="completeAddress" isInvalid={errors.completeAddress}>
+                        <FormControl id="businessAddress" isInvalid={errors.businessAddress}>
                             <FormLabel>Business Address</FormLabel>
-                            <Input type="text" {...register('completeAddress', { required: 'Complete Address is required' })} />
-                            {errors.completeAddress && <Text color="red.500">{errors.completeAddress.message}</Text>}
+                            <Input type="text" {...register('businessAddress', { required: 'Complete Address is required' })} />
+                            {errors.businessAddress && <Text color="red.500">{errors.businessAddress.message}</Text>}
                         </FormControl>
 
                         <FormControl id="terms" isInvalid={errors.terms} >

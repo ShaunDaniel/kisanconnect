@@ -7,7 +7,6 @@ export default function Footer() {
       bg={useColorModeValue('green.100', 'green.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
       py={4}
-      mt={8}
     >
       <Flex
         align={'center'}

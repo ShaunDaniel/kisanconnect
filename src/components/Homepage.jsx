@@ -11,7 +11,9 @@ function Homepage() {
         navigate('/signup');
 
     }
-    const{t}=useTranslation();
+    const { t } = useTranslation();
+    
+
 
     return (
 
@@ -26,7 +28,7 @@ function Homepage() {
                 </Button>
             </Flex>
             <Flex w={{ base: "100%", md: "50%" }} justifyContent={'end'} direction={'column'} >
-                <Image src={'/farmer_landing.png'} objectFit={'cover'} boxSize={{ base: '50vh', md: '80vh' }} m={0} alignSelf={'center'} />
+                <Image alt='image of a happy farmer' src={'/farmer_landing.png'} objectFit={'cover'} boxSize={{ base: '50vh', md: '80vh' }} m={0} alignSelf={'center'} />
                 <Flex h={'100px'} display={{ base: 'flex', md: 'none' }} bgColor={'green.800'} w={'full'}></Flex>
             </Flex>
 
