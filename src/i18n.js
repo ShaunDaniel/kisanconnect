@@ -1,5 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 i18n.use(initReactI18next).init({
     lng: 'en',
@@ -24,7 +25,20 @@ i18n.use(initReactI18next).init({
                 Email: "Email Address",
                 supportingindian:"Supporting Indian Farmers through Transparent and Secure Contract Farming",
                 Empowering:"Empowering Farmers, Connecting Buyers",
-                GetStarted:"Get Started"
+                GetStarted:"Get Started",
+                BuyProduce:"Buy Produce",
+                SellProduce:"Sell Produce",
+                SignBuyProduce:"Sign Up to Buy Produce",
+                FName:"First Name",
+                LName:"Last Name",
+                Pno:"Phone Number",
+                CPassword:"confirrm Password",
+                State:"State",
+                City:"City",
+                B_O:"Business/Organization Name",
+                BAddress:"Business Address",
+                iagree: "I agree to the terms and conditions",
+                Register:"Register"
             }
         },
         hi: {
@@ -35,6 +49,7 @@ i18n.use(initReactI18next).init({
                 signInToYourAccount: "अपने खाते में साइन इन करें",
                 emailAddress: "ईमेल पता",
                 password: "पासवर्ड",
+                iWantTo: "मैं चाहता/चाहती हूँ",
                 rememberMe: "मुझे याद रखें",
                 forgotPassword: "पासवर्ड भूल गए?",
                 signIn: "साइन इन करें",
@@ -43,7 +58,23 @@ i18n.use(initReactI18next).init({
                 registerAsBuyer: "किसानों से जुड़ें,\n थोक में ताजा उपज प्राप्त करें!",
                 supportingindian:"भारतीय किसानों का समर्थन पारदर्शी और सुरक्षित अनुबंध खेती के माध्यम से",
                 Empowering:"किसानों को सशक्त बनाना, खरीदारों से जोड़ना",
-                GetStarted:"शुरू करें"
+                GetStarted:"शुरू करें",
+                BuyProduce:"उत्पाद खरीदें",
+                SellProduce:"उत्पाद बेचें",
+                Email:"ईमेल",
+                newtoKC:"किसान कनेक्ट में नए हैं",
+                SignBuyProduce:"उत्पाद खरीदने के लिए साइन अप करें",
+                FName:"पहला नाम",
+                LName:"अंतिम नाम",
+                Pno:"फोन नंबर",
+                CPassword:"पासवर्ड की पुष्टि करें",
+                State:"राज्य" ,
+                City:"शहर",
+                B_O:"व्यवसाय/संगठन का नाम",
+                BAddress:"व्यवसाय का पता",
+                iagree:"मैं शर्तों और नियमों से सहमत हूँ",
+                Register:"पंजीकरण करें"
+
                 
             }
         },
