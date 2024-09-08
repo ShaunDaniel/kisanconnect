@@ -91,7 +91,7 @@ export default function RegisterBuyer() {
                 w={{ base: '100%', md: '50%' }}
             >
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Heading textAlign={'start'} w={'full'} pt={5} pb={5}>{t('Sign Up to Buy Produce')}</Heading>
+                    <Heading textAlign={'start'} w={'full'} pt={5} pb={5}>{t('SignBuyProduce')}</Heading>
                     
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                         
@@ -188,7 +188,7 @@ export default function RegisterBuyer() {
                         </FormControl>
 
                         <FormControl id="businessName" isInvalid={errors.businessName}>
-                            <FormLabel>{T('Business/Organization Name')}</FormLabel>
+                            <FormLabel>{t('B_O')}</FormLabel>
                             <Input type="text" {...register('businessName', { required: 'Business/Organization Name is required' })} />
                             {errors.businessName && <Text color="red.500">{errors.businessName.message}</Text>}
                         </FormControl>
