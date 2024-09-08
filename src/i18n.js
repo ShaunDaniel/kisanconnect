@@ -24,7 +24,9 @@ i18n.use(initReactI18next).init({
                 iWantTo: "I want to",
                 buyProduce: "Buy Produce",
                 sellProduce: "Sell Produce",
-                supportingFarmers : "Supporting Indian Farmers through Transparent and Secure Contract Farming"
+                supportingindian:"Supporting Indian Farmers through Transparent and Secure Contract Farming",
+                Empowering:"Empowering Farmers, Connecting Buyers",
+                GetStarted:"Get Started"
             }
         },
         hi: {
@@ -44,9 +46,10 @@ i18n.use(initReactI18next).init({
                 iWantTo: "मैं चाहता हूँ",
                 buyProduce: "उपज खरीदना",
                 sellProduce: "उपज बेचना",
-                supportingFarmers : "पारदर्शी और सुरक्षित अनुबंध खेती के माध्यम से भारतीय किसानों का समर्थन"
+                supportingindian:"भारतीय किसानों का समर्थन पारदर्शी और सुरक्षित अनुबंध खेती के माध्यम से",
+                Empowering:"किसानों को सशक्त बनाना, खरीदारों से जोड़ना",
+                GetStarted:"शुरू करें"
                 
-
             }
         },
         ml: {

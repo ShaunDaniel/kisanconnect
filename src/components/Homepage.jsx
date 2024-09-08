@@ -9,20 +9,22 @@ function Homepage() {
     const navigate = useNavigate();
     const handleGetStarted = () => {
         navigate('/signup');
+
     }
     const { t } = useTranslation();
     
+
 
     return (
 
         <Flex w={'full'} direction={{ base: 'column', md: 'row' }} minH={'80vh'} gap={5}>
             <Flex w={{ base: "100%", md: "50%" }} h={{ base: "30vh", md: "50vh" }} bgColor={useColorModeValue('green.100', 'green.900')} borderRightRadius={{ base: 0, md: 20 }} p={{ base: 5, md: 10 }} direction={'column'}>
-                <Heading fontSize={{ base: '3xl', md: '5xl' }} fontWeight={800} textAlign={'left'}>Empowering Farmers, Connecting Buyers</Heading>
+                <Heading fontSize={{ base: '3xl', md: '5xl' }} fontWeight={800} textAlign={'left'}>{t('Empowering')}</Heading>
                 <Text fontSize={{ base: 'md', md: 'xl' }} textAlign={'left'} mt={4}>
-                    {t('supportingFarmers')}
+                    {t('supportingindian')}
                 </Text>
                 <Button colorScheme='green' w={"50%"} variant='solid' mt={4} onClick={handleGetStarted}>
-                    Get Started
+                    {t('GetStarted')}
                 </Button>
             </Flex>
             <Flex w={{ base: "100%", md: "50%" }} justifyContent={'end'} direction={'column'} >
