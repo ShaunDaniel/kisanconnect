@@ -60,12 +60,10 @@ i18n.use(initReactI18next).init({
                 registerAsBuyer: "किसानों से जुड़ें,\n थोक में ताजा उपज प्राप्त करें!",
                 iWantTo: "मैं चाहता हूँ",
                 buyProduce: "उपज खरीदना",
-                sellProduce: "उपज बेचना",
+                SellProduce: "उपज बेचना",
                 supportingindian:"भारतीय किसानों का समर्थन पारदर्शी और सुरक्षित अनुबंध खेती के माध्यम से",
                 Empowering:"किसानों को सशक्त बनाना, खरीदारों से जोड़ना",
                 GetStarted:"शुरू करें",
-                BuyProduce:"उत्पाद खरीदें",
-                SellProduce:"उत्पाद बेचें",
                 Email:"ईमेल",
                 newtoKC:"किसान कनेक्ट में नए हैं",
                 SignBuyProduce:"उत्पाद खरीदने के लिए साइन अप करें",
@@ -100,6 +98,31 @@ i18n.use(initReactI18next).init({
                 iWantTo: "എനിക്ക്",
                 buyProduce: "ഉൽപ്പന്നം വാങ്ങണം",
                 sellProduce: "ഉൽപ്പന്നം വിൽക്കണം"
+            }
+        },
+        bn: {
+            translation: {
+                // Add Bengali translations here
+            }
+        },
+        te: {
+            translation: {
+                // Add Telugu translations here
+            }
+        },
+        ta: {
+            translation: {
+                // Add Tamil translations here
+            }
+        },
+        kn: {
+            translation: {
+                // Add Kannada translations here
+            }
+        },
+        gu: {
+            translation: {
+                // Add Gujarati translations here
             }
         }
     }
