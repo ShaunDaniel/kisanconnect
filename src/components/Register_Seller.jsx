@@ -97,18 +97,18 @@ export default function RegisterSeller() {
                     <Heading textAlign={'start'} w={'full'} pt={5} pb={5}>Become a Farmer Partner</Heading>
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                         <FormControl id="firstName" isInvalid={errors.firstName}>
-                            <FormLabel>First Name</FormLabel>
+                            <FormLabel>{t('FName')}</FormLabel>
                             <Input type="text" placeholder='Ramesh' {...register('firstName', { required: 'First Name is required' })} />
                             {errors.firstName && <Text color="red.500">{errors.firstName.message}</Text>}
                         </FormControl>
                         <FormControl id="lastName" isInvalid={errors.lastName}>
-                            <FormLabel>Last Name</FormLabel>
+                            <FormLabel>{t('LName')}</FormLabel>
                             <Input type="text" placeholder='Singh' {...register('lastName', { required: 'Last Name is required' })} />
                             {errors.lastName && <Text color="red.500">{errors.lastName.message}</Text>}
                         </FormControl>
 
                         <FormControl id="email" isInvalid={errors.email}>
-                            <FormLabel>Email Address</FormLabel>
+                            <FormLabel>{t('Email')}</FormLabel>
                             <Input
                                 type="email"
                                 placeholder='ramesh.singh@gmail.com'
@@ -123,13 +123,13 @@ export default function RegisterSeller() {
                         </FormControl>
 
                         <FormControl id="phone" isInvalid={errors.phone}>
-                            <FormLabel>Phone Number</FormLabel>
+                            <FormLabel>{t('Pno')}</FormLabel>
                             <Input type="tel" placeholder='+91 XXXXXXXXXX' {...register('phone', { required: 'Phone Number is required' })} />
                             {errors.phone && <Text color="red.500" align={'left'}>{errors.phone.message}</Text>}
                         </FormControl>
 
                         <FormControl id="password" isInvalid={errors.password}>
-                            <FormLabel>Password</FormLabel>
+                            <FormLabel>{t('password')}</FormLabel>
                             <Input type="password" placeholder='********' {...register('password', {
                                             required: 'Password is required',
                                             minLength: {
@@ -141,7 +141,7 @@ export default function RegisterSeller() {
                         </FormControl>
 
                         <FormControl id="confirmPassword" isInvalid={errors.confirmPassword}>
-                            <FormLabel>Confirm Password</FormLabel>
+                            <FormLabel>{t('CPassword')}</FormLabel>
                             <Input
                                 type="password"
                                 placeholder='********'
@@ -155,7 +155,7 @@ export default function RegisterSeller() {
                         </FormControl>
 
                         <FormControl id="state" isInvalid={errors.state}>
-                            <FormLabel>State</FormLabel>
+                            <FormLabel>{t('State')}</FormLabel>
                             <Select
                                 placeholder="Select State"
                                 {...register('state', { required: 'State is required' })}
@@ -171,7 +171,7 @@ export default function RegisterSeller() {
                         </FormControl>
 
                         <FormControl id="city" isInvalid={errors.city}>
-                            <FormLabel>City</FormLabel>
+                            <FormLabel>{t('City')}</FormLabel>
                             <Select
                                 placeholder="Select City"
                                 {...register('city', { required: 'City is required' })}
@@ -187,7 +187,7 @@ export default function RegisterSeller() {
                         </FormControl>
 
                         <FormControl id="landArea" isInvalid={errors.landArea}>
-                            <FormLabel>Land Area</FormLabel>
+                            <FormLabel>{t('LandArea')}</FormLabel>
                             <Select
                                 placeholder="Select Land Area"
                                 {...register('landArea', { required: 'Land Area is required' })}
@@ -201,46 +201,46 @@ export default function RegisterSeller() {
                         </FormControl>
 
                         <FormControl id="farmingType" isInvalid={errors.farmingType}>
-                            <FormLabel>Type of Farming</FormLabel>
+                            <FormLabel>{t('TypeofFarming')}</FormLabel>
                             <Select
                                 placeholder="Select Type of Farming"
                                 {...register('farmingType', { required: 'Type of Farming is required' })}
                             >
-                                <option value="Organic">Organic</option>
-                                <option value="Traditional">Traditional</option>
-                                <option value="Mixed">Mixed</option>
-                                <option value="Others">Others</option>
+                                <option value="Organic">{t('Organic')}</option>
+                                <option value="Traditional">{('Traditional')}</option>
+                                <option value="Mixed">{('Mixed')}</option>
+                                <option value="Others">{('Others')}</option>
                             </Select>
                             {errors.farmingType && <Text color="red.500">{errors.farmingType.message}</Text>}
                         </FormControl>
 
                         <FormControl id="hasTransportService" isInvalid={errors.hasTransportService}>
-                            <FormLabel>Transportation Facilities</FormLabel>
+                            <FormLabel>{t('TransportationFacilities')}</FormLabel>
                             <Checkbox {...register('hasTransportService')}>
-                                Do you have your own vehicle for delivery?
+                                {t('delivery')}
                             </Checkbox>
                             {errors.hasTransportService && <Text color="red.500">{errors.hasTransportService.message}</Text>}
                         </FormControl>
 
                         <FormControl id="isCertified">
-                            <FormLabel>Certification</FormLabel>
+                            <FormLabel>{t('Certification')}</FormLabel>
                             <Checkbox {...register('isCertified')} w={'full'} my={1}>
-                                I have certifications
+                                {t('Ihavecertifications')}
                             </Checkbox>
                             <Text fontSize="sm" color="gray.500">
-                                Note: You will need to verify your certifications later.
+                                {t('Note')}
                             </Text>
                         </FormControl>
 
                         <FormControl id="istermsAccepted" isInvalid={errors.istermsAccepted}>
                             <Checkbox w={"full"} {...register('istermsAccepted', { required: 'You must agree to the terms and conditions' })}>
-                                I agree to the terms and conditions
+                              {t( 'iagree')}
                             </Checkbox>
                             {errors.terms && <Text color="red.500">{errors.istermsAccepted.message}</Text>}
                         </FormControl>
                     </SimpleGrid>
                     <Button type="submit" colorScheme="green" w={'full'} size={'lg'} mt={4}>
-                        Register
+                        {t('Register')}
                     </Button>
                 </form>
             </Flex>

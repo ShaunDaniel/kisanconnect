@@ -40,7 +40,19 @@ i18n.use(initReactI18next).init({
                 B_O:"Business/Organization Name",
                 BAddress:"Business Address",
                 iagree: "I agree to the terms and conditions",
-                Register:"Register"
+                Register:"Register",
+
+                LandArea:"Land Area",
+                TypeofFarming:"Type of Farming",
+                Organic:"Organic",
+                Traditional:"Traditional",
+                Mixed:"Mixed",
+                Others:"others",
+                TransportationFacilities:"Transportation Facilities",
+                delivery:"Do you have your own vehicle for delivery?",
+                Certification:"Certification",
+                Note:"Note: You will need to verify your certifications later.",
+                Ihavecertifications:" I have certifications",
             }
         },
         hi: {
@@ -76,9 +88,19 @@ i18n.use(initReactI18next).init({
                 B_O:"व्यवसाय/संगठन का नाम",
                 BAddress:"व्यवसाय का पता",
                 iagree:"मैं शर्तों और नियमों से सहमत हूँ",
-                Register:"पंजीकरण करें"
+                Register:"पंजीकरण करें",
+                LandArea:"भूमि क्षेत्र",
+                TypeofFarming:"किसानी के प्रकार",
+                Organic:"जैविक",
+                Traditional:"पारंपरिक",
+                Mixed:"मिश्रित",
+                Others:"अन्य",
+                TransportationFacilities:"परिवहन सुविधाएँ",
+                delivery:"क्या आपके पास डिलीवरी के लिए अपना वाहन है?",
+                Certification:"प्रमाणन",
+                Note:"नोट: आपको बाद में अपने प्रमाणनों की पुष्टि करनी होगी।",
+                Ihavecertifications:"मेरे पास प्रमाणपत्र हैं"
 
-                
             }
         },
         ml: {
@@ -97,7 +119,15 @@ i18n.use(initReactI18next).init({
                 registerAsBuyer: "കർഷകരുമായി ബന്ധപ്പെടുക, ന്നപിരിവിൽ പുതിയ വിളകൾ ഉറപ്പാക്കുക!",
                 iWantTo: "എനിക്ക്",
                 buyProduce: "ഉൽപ്പന്നം വാങ്ങണം",
-                sellProduce: "ഉൽപ്പന്നം വിൽക്കണം"
+                sellProduce: "ഉൽപ്പന്നം വിൽക്കണം",
+                TypeofFarming:"",
+                Traditional:"",
+                Others:"",
+                TransportationFacilities:"",
+                delivery:"",
+                Certification:"",
+                Note:"",
+                Ihavecertifications:""
             }
         },
         bn: {
