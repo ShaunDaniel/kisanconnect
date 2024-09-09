@@ -94,7 +94,7 @@ export default function RegisterSeller() {
                 w={{ base: '100%', md: '50%' }}
             >
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Heading textAlign={'start'} w={'full'} pt={5} pb={5}>Become a Farmer Partner</Heading>
+                    <Heading textAlign={'start'} w={'full'} pt={5} pb={5}>{t('BecomeFarmer')}</Heading>
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                         <FormControl id="firstName" isInvalid={errors.firstName}>
                             <FormLabel>{t('FName')}</FormLabel>
